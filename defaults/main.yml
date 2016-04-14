@@ -1,0 +1,5 @@
+---
+# defaults file for marathon_lb
+marathon_lb_usr : 'andrewrothstein'
+marathon_lb_ver: 'v1.1.4'
+marathon_lb_sha1 : '4e52d1b'

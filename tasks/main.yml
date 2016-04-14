@@ -1,0 +1,34 @@
+---
+# tasks file for marathon_lb
+- name: download...
+  get_url: >-
+    url={{marathon_lb_url}}
+    dest=/tmp/{{marathon_lb_tgz}}
+    owner=root
+    group=root
+    mode=644
+
+- name: unarchive...
+  unarchive: >-
+    copy=no
+    src=/tmp/{{marathon_lb_tgz}}
+    dest=/opt
+
+- name: link /opt/marathon-lb
+  file: >-
+    src={{marathon_lb_src_dir}}
+    dest=/opt/marathon-lb
+    state=link
+    
+- name: install python dependencies
+  pip: >-
+    virtualenv={{marathon_lb_venv}}
+    requirements=/opt/marathon-lb/requirements.txt
+    state=present
+
+- name: build/install lua and haproxy
+  command: /opt/marathon-lb/build-haproxy.sh
+  args:
+    creates: /usr/local/sbin/haproxy
+
+

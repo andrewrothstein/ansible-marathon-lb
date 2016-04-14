@@ -1,0 +1,7 @@
+---
+# vars file for marathon_lb
+marathon_lb_tgz : 'marathon-{{marathon_lb_ver}}.tgz'
+marathon_lb_repo : 'https://github.com/{{marathon_lb_usr}}/marathon-lb'
+marathon_lb_url : '{{marathon_lb_repo}}/tarball/{{marathon_lb_ver}}'
+marathon_lb_src_dir : '/opt/{{marathon_lb_usr}}-marathon-lb-{{marathon_lb_sha1}}'
+marathon_lb_venv : '/opt/marathon-lb/venv'
